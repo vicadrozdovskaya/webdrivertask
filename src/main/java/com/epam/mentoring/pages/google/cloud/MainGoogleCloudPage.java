@@ -1,10 +1,12 @@
 package com.epam.mentoring.pages.google.cloud;
 
+import com.epam.mentoring.annotation.PageFactory;
 import com.epam.mentoring.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@PageFactory
 public class MainGoogleCloudPage extends AbstractPage {
 
     private final String BASE_URL = "https://cloud.google.com";
@@ -15,8 +17,8 @@ public class MainGoogleCloudPage extends AbstractPage {
     @FindBy (css = "a[track-metadata-eventdetail='calculators']")
     private WebElement tabPricingCalculator;
 
-    public MainGoogleCloudPage (WebDriver driver) {
-        super(driver);
+    public MainGoogleCloudPage () {
+        super();
     }
 
     public MainGoogleCloudPage openPage () {

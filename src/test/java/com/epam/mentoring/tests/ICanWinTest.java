@@ -22,10 +22,10 @@ public class ICanWinTest extends BaseTest {
     @BeforeClass
     public void createNewGist() {
         MainGistGitHubPage mainGistGitHubPage = new MainGistGitHubPage(DriverSingleton.getDriver()).openPage().clickSignInButton();
-        LoginGistPage loginGistPage = new LoginGistPage(DriverSingleton.getDriver()).enterLogin(LOGIN).enterPassword(PASS).clickSignInButton();
-        CreateGistPage createGistPage = new CreateGistPage(DriverSingleton.getDriver()).openPage().fillGistDescription(DESCRIPTION).fillFileName(NAME).fillFileEditorArea(TEXT).clickOnCreatePublicGistButton();
+        LoginGistPage loginGistPage = new LoginGistPage().enterLogin(LOGIN).enterPassword(PASS).clickSignInButton();
+        CreateGistPage createGistPage = new CreateGistPage().openPage().fillGistDescription(DESCRIPTION).fillFileName(NAME).fillFileEditorArea(TEXT).clickOnCreatePublicGistButton();
         UserGistPage userGistPage = new UserGistPage(DriverSingleton.getDriver()).openUserPage(LOGIN).setCurrentGist(NAME).clickCurrentGist();
-        gistPage = new GistPage(DriverSingleton.getDriver());
+        gistPage = new GistPage();
     }
 
     @Test(description = "checkDescriptionTest")

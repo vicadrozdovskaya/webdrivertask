@@ -22,9 +22,9 @@ public class HurtMePlentyTest extends BaseTest {
 
     @BeforeClass
     public void fillAllFields() {
-        MainGoogleCloudPage mainGoogleCloudPage = new MainGoogleCloudPage(DriverSingleton.getDriver()).openPage()
+        MainGoogleCloudPage mainGoogleCloudPage = new MainGoogleCloudPage().openPage()
                 .clickTabPricing().clickTabPricingCalculator();
-        productCalculatorsGoogleCloudPage = new ProductCalculatorsGoogleCloudPage(DriverSingleton.getDriver())
+        productCalculatorsGoogleCloudPage = new ProductCalculatorsGoogleCloudPage()
                 .enterNumberOfInstances(NUMBER_OF_INSTANCES)
                 .clickOperationSystem().chooseItemInDropDownMenu(OPERATION_SYSTEM)
                 .clickMachineClass().chooseItemInDropDownMenu(VM_CLASS)

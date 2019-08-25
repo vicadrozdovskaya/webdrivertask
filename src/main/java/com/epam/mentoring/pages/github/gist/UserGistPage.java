@@ -13,7 +13,7 @@ public class UserGistPage extends AbstractPage {
     private final String BASE_URL = "https://gist.github.com/";
 
     public UserGistPage (WebDriver driver) {
-        super(driver);
+        super();
     }
 
     @FindBy (css = "div[class='gist-snippet-meta d-inline-block width-full']")

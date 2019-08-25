@@ -16,14 +16,14 @@ public class BringItOnTest extends BaseTest {
     @BeforeTest
     public void logIn() {
         MainGistGitHubPage mainGistGitHubPage = new MainGistGitHubPage(DriverSingleton.getDriver()).openPage().clickSignInButton();
-        LoginGistPage loginGistPage = new LoginGistPage(DriverSingleton.getDriver()).enterLogin(LOGIN).enterPassword(PASS).clickSignInButton();
+        LoginGistPage loginGistPage = new LoginGistPage().enterLogin(LOGIN).enterPassword(PASS).clickSignInButton();
 
     }
 
     @Test(description = "create gist test")
     public void bringItOnTaskTest() {
-        CreateGistPage createGistPage = new CreateGistPage(DriverSingleton.getDriver()).openPage().fillGistDescription("Paste Expiration: 10 Minutes").fillFileName("helloweb").fillFileEditorArea("Hello from WebDriver").clickOnCreatePublicGistButton();
-        GistPage gistPage = new GistPage(DriverSingleton.getDriver());
+        CreateGistPage createGistPage = new CreateGistPage().openPage().fillGistDescription("Paste Expiration: 10 Minutes").fillFileName("helloweb").fillFileEditorArea("Hello from WebDriver").clickOnCreatePublicGistButton();
+        GistPage gistPage = new GistPage();
         Assert.assertEquals(gistPage.getGistName().getText(),"helloweb","gist name not equals");
     }
 }

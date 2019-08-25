@@ -3,24 +3,28 @@ package com.epam.mentoring.driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public enum  DriverSingleton {
+public class DriverSingleton {
 
-    INSTANCE;
+    private static final ResourceBundle rb;
     private static WebDriver driver;
-    private final static String CHROME = "webdriver.chrome.driver";
-    private final static String CHROME_PATH = "C:\\webdrivers\\chromedriver\\chromedriver.exe";
 
-    DriverSingleton(){
+    static {
+        rb = ResourceBundle.getBundle("driver");
+    }
+
+    DriverSingleton() {
 
     }
+
     public static WebDriver getDriver() {
         if (null == driver) {
-            System.setProperty(CHROME, CHROME_PATH);
+            System.setProperty(rb.getString("driver.browser"), rb.getString("driver.browser.path"));
             driver = new ChromeDriver();
-            driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(rb.getString("driver.page.load.timeout")), TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Integer.parseInt(rb.getString("driver.implicitly.wait")), TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
 

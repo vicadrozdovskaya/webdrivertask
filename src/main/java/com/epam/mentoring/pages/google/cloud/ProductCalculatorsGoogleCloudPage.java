@@ -1,5 +1,6 @@
 package com.epam.mentoring.pages.google.cloud;
 
+import com.epam.mentoring.annotation.PageFactory;
 import com.epam.mentoring.driver.DriverSingleton;
 import com.epam.mentoring.pages.AbstractPage;
 import org.openqa.selenium.By;
@@ -15,6 +16,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@PageFactory
 public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
 
     @FindBy (css = "input[ng-model='listingCtrl.computeServer.quantity']")
@@ -58,8 +60,8 @@ public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
                                                                                 .pollingEvery(Duration.ofSeconds(1));
 
 
-    public ProductCalculatorsGoogleCloudPage (WebDriver driver) {
-        super(driver);
+    public ProductCalculatorsGoogleCloudPage () {
+        super();
         this.driver.switchTo().frame(driver.findElement(By.id("idIframe")));
     }
 

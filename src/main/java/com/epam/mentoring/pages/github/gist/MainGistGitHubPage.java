@@ -14,7 +14,7 @@ public class MainGistGitHubPage extends AbstractPage {
 
 
     public MainGistGitHubPage (WebDriver driver) {
-        super(driver);
+        super();
 
     }
 

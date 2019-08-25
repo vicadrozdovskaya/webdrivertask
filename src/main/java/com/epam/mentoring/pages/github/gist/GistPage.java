@@ -19,8 +19,8 @@ public class GistPage extends AbstractPage {
     @FindBy (css = "button[aria-label='Delete this Gist']")
     private WebElement deleteGistBtn;
 
-    public GistPage (WebDriver driver) {
-        super(driver);
+    public GistPage () {
+        super();
     }
 
     public WebElement getGistDescription () {

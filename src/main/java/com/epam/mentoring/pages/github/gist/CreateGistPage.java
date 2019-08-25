@@ -21,8 +21,8 @@ public class CreateGistPage extends AbstractPage {
     @FindBy (css = "button[class='btn js-gist-create ']")
     private WebElement createPublicGistButton;
 
-    public CreateGistPage (WebDriver driver) {
-        super(driver);
+    public CreateGistPage () {
+        super();
     }
 
     public CreateGistPage clickOnCreatePublicGistButton () {

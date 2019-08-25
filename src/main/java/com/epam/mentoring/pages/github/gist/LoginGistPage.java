@@ -1,10 +1,12 @@
 package com.epam.mentoring.pages.github.gist;
 
+import com.epam.mentoring.annotation.PageFactory;
 import com.epam.mentoring.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@PageFactory
 public class LoginGistPage extends AbstractPage {
 
     @FindBy (id = "login_field")
@@ -16,8 +18,8 @@ public class LoginGistPage extends AbstractPage {
     @FindBy (xpath = "//input[@value='Sign in']")
     private WebElement signInButton;
 
-    public LoginGistPage (WebDriver driver) {
-        super(driver);
+    public LoginGistPage () {
+        super();
     }
 
     public LoginGistPage enterLogin (String login) {
