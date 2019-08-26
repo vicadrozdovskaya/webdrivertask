@@ -1,18 +1,12 @@
 package com.epam.mentoring.pages.google.cloud;
 
 import com.epam.mentoring.annotation.PageFactory;
-import com.epam.mentoring.driver.DriverSingleton;
 import com.epam.mentoring.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,10 +48,6 @@ public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
 
     @FindBy (id = "resultBlock")
     private WebElement resultBlock;
-
-    private Wait<WebDriver> wait = new FluentWait<>(DriverSingleton.getDriver()).withMessage("Element was not found")
-                                                                                .withTimeout(Duration.ofSeconds(10))
-                                                                                .pollingEvery(Duration.ofSeconds(1));
 
 
     public ProductCalculatorsGoogleCloudPage () {
@@ -126,25 +116,21 @@ public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
     }
 
     public ProductCalculatorsGoogleCloudPage chooseItemInDropDownMenu (String item) {
-        List<WebElement> list = driver.findElements(By.xpath(
-            "//div[@class='md-select-menu-container md-active md-clickable']/md-select-menu/md-content/md-option/div[@class=('md-text' or 'md-text ng-binding')]"));
-        wait.until(ExpectedConditions.visibilityOfAllElements(list));
-        list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
-        return this;
-    }
-
-    public ProductCalculatorsGoogleCloudPage chooseNumberOfGPUsInDropDownMenu (String item) {
-        List<WebElement> list = driver.findElements(By.cssSelector(
-            "div[class='md-select-menu-container md-active md-clickable']>md-select-menu>md-content>md-option>div[class='md-text ng-binding']"));
-        wait.until(ExpectedConditions.visibilityOfAllElements(list));
+        By itemsDropDownMenu = By.xpath(
+                "//div[@class='md-select-menu-container md-active md-clickable']/md-select-menu/md-content/md-option/div[@class=" +
+                "('md-text' or 'md-text ng-binding')]");
+        List<WebElement> list = driver.findElements(itemsDropDownMenu);
+        waitForElementsVisible(itemsDropDownMenu);
         list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
         return this;
     }
 
     public ProductCalculatorsGoogleCloudPage chooseMachineTypeInDropDownMenu (String item) {
-        List<WebElement> list = driver.findElements(By.cssSelector(
-            "div[class='md-select-menu-container md-active md-clickable']>md-select-menu>md-content>md-optgroup>md-option>div[class='md-text ng-binding']"));
-        wait.until(ExpectedConditions.visibilityOfAllElements(list));
+        By itemsDropDownMenu = By.cssSelector(
+                "div[class='md-select-menu-container md-active md-clickable']>md-select-menu>md-content>md-optgroup>md-option>div[class" +
+                "='md-text ng-binding']");
+        List<WebElement> list = driver.findElements(itemsDropDownMenu);
+        waitForElementsVisible(itemsDropDownMenu);
         list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
         return this;
     }

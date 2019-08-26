@@ -1,6 +1,5 @@
 package com.epam.mentoring.tests;
 
-import com.epam.mentoring.driver.DriverSingleton;
 import com.epam.mentoring.pages.github.gist.CreateGistPage;
 import com.epam.mentoring.pages.github.gist.GistPage;
 import com.epam.mentoring.pages.github.gist.LoginGistPage;
@@ -14,16 +13,20 @@ public class BringItOnTest extends BaseTest {
     private static final String PASS = "Vica110493";
 
     @BeforeTest
-    public void logIn() {
-        MainGistGitHubPage mainGistGitHubPage = new MainGistGitHubPage(DriverSingleton.getDriver()).openPage().clickSignInButton();
+    public void logIn () {
+        MainGistGitHubPage mainGistGitHubPage = new MainGistGitHubPage().openPage().clickSignInButton();
         LoginGistPage loginGistPage = new LoginGistPage().enterLogin(LOGIN).enterPassword(PASS).clickSignInButton();
 
     }
 
-    @Test(description = "create gist test")
-    public void bringItOnTaskTest() {
-        CreateGistPage createGistPage = new CreateGistPage().openPage().fillGistDescription("Paste Expiration: 10 Minutes").fillFileName("helloweb").fillFileEditorArea("Hello from WebDriver").clickOnCreatePublicGistButton();
+    @Test (description = "create gist test")
+    public void bringItOnTaskTest () {
+        CreateGistPage createGistPage = new CreateGistPage().openPage()
+                                                            .fillGistDescription("Paste Expiration: 10 Minutes")
+                                                            .fillFileName("helloweb")
+                                                            .fillFileEditorArea("Hello from WebDriver")
+                                                            .clickOnCreatePublicGistButton();
         GistPage gistPage = new GistPage();
-        Assert.assertEquals(gistPage.getGistName().getText(),"helloweb","gist name not equals");
+        Assert.assertEquals(gistPage.getGistName().getText(), "helloweb", "gist name not equals");
     }
 }

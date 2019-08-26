@@ -7,8 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-import static org.openqa.selenium.support.PageFactory.*;
+import static org.openqa.selenium.support.PageFactory.initElements;
 
 
 public abstract class AbstractPage {
@@ -17,13 +16,10 @@ public abstract class AbstractPage {
 
     public AbstractPage () {
         this.driver = DriverSingleton.getDriver();
-if (getClass().isAnnotationPresent(PageFactory.class))
-        initElements(this.driver, this);
+        if (getClass().isAnnotationPresent(PageFactory.class)) initElements(this.driver, this);
     }
-    protected void waitForElementsVisible(By locator) {
+
+    protected void waitForElementsVisible (By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-    }
-    protected void waitForElementVisible(By locator, String attribute) {
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.attributeToBeNotEmpty(driver.findElement(locator),attribute));
     }
 }

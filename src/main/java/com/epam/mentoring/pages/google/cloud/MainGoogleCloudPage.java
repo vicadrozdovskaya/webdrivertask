@@ -2,7 +2,6 @@ package com.epam.mentoring.pages.google.cloud;
 
 import com.epam.mentoring.annotation.PageFactory;
 import com.epam.mentoring.pages.AbstractPage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

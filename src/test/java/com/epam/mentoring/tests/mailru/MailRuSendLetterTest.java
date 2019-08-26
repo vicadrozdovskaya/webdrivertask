@@ -9,18 +9,16 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class MailRuSendLetterTest extends BaseTest {
+@Test(groups = "mailruWithLogin")
+public class MailRuSendLetterTest extends MailRuBaseTest {
 
-    private final String USERNAME = "tathtp";
-    private final String PASSWORD = "Klopik123";
     private final String EMAIL = "vica.drozdovskaya@gmail.com";
     private final String SUBJECT = "new subject";
     private final String TEXT = "new content";
     MailRuLetterWasSentPage mailRuLetterWasSentPage;
 
     @BeforeClass
-    public void signIn() {
-        MailRuLoginPage mailRuLoginPage = new MailRuLoginPage().openPage().fillLoginField(USERNAME).fillPasswordField(PASSWORD).clickSignInBtn();
+    public void writeLetter() {
         MailRuInboxPage mailRuInboxPage = new MailRuInboxPage().clickWriteLetterBtn();
         MailRuWriteLetterPage mailRuWriteLetterPage = new MailRuWriteLetterPage()
                 .fillRecieverLetterField(EMAIL)
