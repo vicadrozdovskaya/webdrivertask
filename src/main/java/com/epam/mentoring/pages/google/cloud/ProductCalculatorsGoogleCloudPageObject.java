@@ -108,20 +108,20 @@ public class ProductCalculatorsGoogleCloudPageObject extends AbstractPage {
     public ProductCalculatorsGoogleCloudPageObject chooseItemInDropDownMenu (String item) {
         List<WebElement> list = driver.findElements(searchItemInDropDownMenu);
         waitForElementsVisible(searchItemInDropDownMenu);
-        list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
+        list.stream().filter(webElement -> webElement.getText().contains(item)).findFirst().get().click();
         return this;
     }
 
     public ProductCalculatorsGoogleCloudPageObject chooseMachineTypeInDropDownMenu (String item) {
         List<WebElement> list = driver.findElements(searchMachineTypeItemInDropDownMenu);
         waitForElementsVisible(searchMachineTypeItemInDropDownMenu);
-        list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
+        list.stream().filter(webElement -> webElement.getText().contains(item)).findFirst().get().click();
         return this;
     }
 
     public String getFieldFromEstimate (String field) {
         List<WebElement> list = driver.findElement(searchResultBlockLocator).findElements(searchFieldInEstimateSection);
-        return list.stream().filter(webElement -> webElement.getText().contains(field)).collect(Collectors.toList()).get(0).getText();
+        return list.stream().filter(webElement -> webElement.getText().contains(field)).findFirst().get().getText();
     }
 
     public void scrollToElement (By by) {

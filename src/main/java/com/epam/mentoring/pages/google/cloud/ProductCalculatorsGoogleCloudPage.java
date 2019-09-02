@@ -121,7 +121,7 @@ public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
                 "('md-text' or 'md-text ng-binding')]");
         List<WebElement> list = driver.findElements(itemsDropDownMenu);
         waitForElementsVisible(itemsDropDownMenu);
-        list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
+        list.stream().filter(webElement -> webElement.getText().contains(item)).findFirst().get().click();
         return this;
     }
 
@@ -131,7 +131,7 @@ public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
                 "='md-text ng-binding']");
         List<WebElement> list = driver.findElements(itemsDropDownMenu);
         waitForElementsVisible(itemsDropDownMenu);
-        list.stream().filter(webElement -> webElement.getText().contains(item)).collect(Collectors.toList()).get(0).click();
+        list.stream().filter(webElement -> webElement.getText().contains(item)).findFirst().get().click();
         return this;
     }
 
@@ -140,12 +140,12 @@ public class ProductCalculatorsGoogleCloudPage extends AbstractPage {
     }
 
     public void scrollToElementViaJS (WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public String getFieldFromEstimate (String field) {
         List<WebElement> list = resultBlock.findElements(By.cssSelector("div[class='md-list-item-text ng-binding']"));
-        return list.stream().filter(webElement -> webElement.getText().contains(field)).collect(Collectors.toList()).get(0).getText();
+        return list.stream().filter(webElement -> webElement.getText().contains(field)).findFirst().get().getText();
     }
 
 }
